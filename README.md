@@ -9,11 +9,14 @@ pip install drf-inout
 ```
 
 ### Usage
-```
+
+Use `InOutSerializerMixin` in a view. Example:
+
+```python
 from drf_inout.mixins import InOutSerializerMixin
 
 
-class YourSerializer(InOutSerializerMixin, ModelSerializer):
-   in_serializer_class = YourInSerializer # used for POST/PUT/PATCH requests
-   out_serializer_class = YourOutSerializer # used for GET requests
+class PostListCreateView(InOutSerializerMixin, generics.GenericApiView):
+    input_serializer_class = YourInSerializer # used for POST/PUT/PATCH requests
+    output_serializer_class = YourOutSerializer # used for GET requests
 ```
